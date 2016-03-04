@@ -330,11 +330,11 @@
         template = "\
           <div class='row-fluid item-list'>\
             <div class='span12'>\
-              " + 'Venue: ' + data[row][0] + ' - ' + data[row][2] + "\
+              " + data[row][0] + ' - ' + data[row][2] + "\
               <br />\
-              " + 'Address: ' + data[row][1] + "\
+              " + data[row][1] + "\
               <br />\
-              " + 'Offering ID: ' + data[row][3] + "\
+              " + data[row][3] + "\
               <br />\
             </div>\
           </div>";
