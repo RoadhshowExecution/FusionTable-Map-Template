@@ -334,7 +334,7 @@
               <br />\
               " + '&#8226; Address: ' + data[row][1] + "\
               <br />\
-              " + '&#8226; Offering ID: ' + data[row][3] + "\
+              " + '<b>&#8226; Offering ID: </b>' + data[row][3] + "\
               <br />\
             </div>\
           </div>";
