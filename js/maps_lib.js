@@ -328,7 +328,7 @@
     else {
       for (var row in data) {
         template = "\
-          <div border="1" class='row-fluid item-list'>\
+          <div class='row-fluid item-list'>\
             <div class='span12'>\
               " + 'Venue: ' + data[row][0] + ' - ' + data[row][2] + "\
               <br />\
