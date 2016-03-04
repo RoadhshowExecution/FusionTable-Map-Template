@@ -332,9 +332,9 @@
             <div class='span12'>\
               " + '&#8226; Venue: ' + data[row][0] + ' - ' + data[row][2] + "\
               <br />\
-              " + 'Address: ' + data[row][1] + "\
+              " + '&#8226; Address: ' + data[row][1] + "\
               <br />\
-              " + 'Offering ID: ' + data[row][3] + "\
+              " + '&#8226; Offering ID: ' + data[row][3] + "\
               <br />\
             </div>\
           </div>";
