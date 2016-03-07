@@ -1936,7 +1936,7 @@ select[multiple].input-lg {
     vertical-align: middle;
   }
   .form-inline .input-group > .form-control {
-    width: 100%;
+    width: 50%;
   }
   .form-inline .control-label {
     margin-bottom: 0;
