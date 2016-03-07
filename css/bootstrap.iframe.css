@@ -3855,7 +3855,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     vertical-align: middle;
   }
   .navbar-form .input-group > .form-control {
-    width: 50%;
+    width: 100%;
   }
   .navbar-form .control-label {
     margin-bottom: 0;
