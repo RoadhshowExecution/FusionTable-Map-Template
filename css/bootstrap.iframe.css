@@ -5055,7 +5055,7 @@ a.list-group-item-danger.active:focus {
 }
 .well-right {
   margin-left: 50%;
-  min-height: 500px;
+  min-height: 100%;
   padding: 19px;
   background-color: #bfbfbf;
   border: 1px solid #e3e3e3;
