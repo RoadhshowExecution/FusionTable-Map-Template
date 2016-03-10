@@ -3294,7 +3294,7 @@ input[type="button"].btn-block {
 }
 .input-group {
   position: relative;
-  display: table;
+  /*display: table;*/
   border-collapse: separate;
 }
 .input-group[class*="col-"] {
@@ -3303,7 +3303,7 @@ input[type="button"].btn-block {
   padding-right: 0;
 }
 .input-group .form-control {
-  /*position: relative;*/
+  position: relative;
   z-index: 2;
   float: left;
   width: 50%;
