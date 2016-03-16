@@ -30,14 +30,14 @@
         this.map_centroid = new google.maps.LatLng(options.map_center[0], options.map_center[1]);
         
         // marker image for your searched address
-        if (typeof options.addrMarkerImage !== 'undefined') {
+        /*if (typeof options.addrMarkerImage !== 'undefined') {
             if (options.addrMarkerImage != "")
                 this.addrMarkerImage = options.addrMarkerImage;
             else
                 this.addrMarkerImage = ""
         }
         else
-            this.addrMarkerImage = "images/blue-pushpin.png"
+            this.addrMarkerImage = "images/blue-pushpin.png" */
 
     	this.currentPinpoint = null;
     	$("#result_count").html("");
