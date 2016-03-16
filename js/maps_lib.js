@@ -417,3 +417,20 @@
     }
 
 })(window);
+
+// getDistance calculation uses Haversine formula from centerpoint of map to each row lat and lng
+var rad = function(x) {
+  return x * Math.PI / 180;
+};
+
+var getDistance = function(p1_lat, p1_long, p2_lat, p2_long) {
+  var R = 6378137; // Earth’s mean radius in meter
+  var dLat = rad(p2_lat - p1_lat);
+  var dLong = rad(p2_long - p1_long);
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(rad(p1_lat)) * Math.cos(rad(p2_lat)) *
+    Math.sin(dLong / 2) * Math.sin(dLong / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return Math.round(d * .0006 * 10) / 10; // returns the distance in miles, rounded to the nearest 0.1
+};
