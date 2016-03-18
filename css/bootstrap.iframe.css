@@ -5033,6 +5033,13 @@ a.list-group-item-danger.active:focus {
 .panel-danger > .panel-footer + .panel-collapse .panel-body {
   border-bottom-color: #ebccd1;
 }
+.left-div {
+  float: left;
+}
+.right-div {
+  margin-left: 105px;
+}
+}
 .well {
   min-height: 20px;
   padding: 19px;
