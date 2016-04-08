@@ -331,7 +331,9 @@
           <div class='row-fluid item-list'>\
             <div class='span12'>\
                 <div class='well'>\
-              " + '<b>&#8226; Venue: </b>' + data[row][0] + ' - ' + data[row][2] + "\
+              " + '<b>&#8226; Venue: </b>' + data[row][0] + "\
+              <br />\
+              " + '<b>&#8226; Address: </b>' + data[row][2] + "\
               <br />\
               " + '<b>&#8226; Address: </b>' + data[row][1] + "\
               <br />\
