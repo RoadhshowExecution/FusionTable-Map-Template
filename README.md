@@ -3,7 +3,7 @@ This tool is used to provide users with a visual representation of the available
 
 [![Searchable Map Template screenshot](https://raw.githubusercontent.com/RoadshowExecution/FusionTable-Map-Template/gh-pages/images/D29_Roadshow_Map_Example.jpg)](http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
 
-[See the working demo &raquo;](http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
+[See the working version &raquo;](http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
 
 ## Features
 
