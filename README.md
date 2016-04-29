@@ -1,9 +1,9 @@
 # Fusion Table Searchable Map Template
 You want to put your data on a searchable, filterable map. This is a free, open source template to help you do it.
 
-[![Searchable Map Template screenshot](https://raw.github.com/derekeder/FusionTable-Map-Template/master/images/searchable-map-template-v1.2.jpg)](http://http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
+[![Searchable Map Template screenshot](https://raw.github.com/derekeder/FusionTable-Map-Template/master/images/searchable-map-template-v1.2.jpg)](http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
 
-[See the working demo &raquo;](http://http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
+[See the working demo &raquo;](http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
 
 ## Features
 
