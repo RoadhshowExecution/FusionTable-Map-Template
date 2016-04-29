@@ -5,8 +5,8 @@ This tool is used to provide users with a visual representation of the available
 
 [See the working version &raquo;](http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
 
-<b>Map Updates:</b>
-To update the map data, 
+<b>Map Updates:</b><br>
+To update the map data,  
 
 ## Copyright and attribution
 
