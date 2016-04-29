@@ -9,7 +9,7 @@ This tool is used to provide users with a visual representation of the available
 To update the map data, follow the steps below:<br>
 &#8226; From the FusionTable-Map-Template file list, select <b>index_iframe.html</b><br>
 &#8226; Locate and Click the Edit Icon: [![Edit Icon](https://raw.githubusercontent.com/RoadshowExecution/FusionTable-Map-Template/gh-pages/images/Edit_Pencil.jpg)](https://raw.githubusercontent.com/RoadshowExecution/FusionTable-Map-Template/gh-pages/images/Edit_Pencil.jpg)<br>
-&#8226;
+&#8226; Scroll down to line <b>116</b><br>
 &#8226;
 &#8226;
 &#8226;
