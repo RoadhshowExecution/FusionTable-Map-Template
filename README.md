@@ -13,9 +13,6 @@ To update the map data, follow the steps below:<br>
 &#8226; Replace the fusionTableId with the new <b>Id</b> found in the "About this table" section of the New Roadshow Fusion Table <br>
 &#8226; Scroll Down, Click <b>Commit Changes</b><br>
 &#8226; [Open the Map, Verify the changes have been made &raquo;](http://roadshowexecution.github.io/FusionTable-Map-Template/index_iframe.html#)
-&#8226;
-&#8226;
-&#8226;
 
 ## Copyright and attribution
 
