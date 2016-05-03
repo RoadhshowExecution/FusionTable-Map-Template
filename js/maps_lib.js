@@ -30,14 +30,14 @@
         this.map_centroid = new google.maps.LatLng(options.map_center[0], options.map_center[1]);
         
         // marker image for your searched address
-        if (typeof options.addrMarkerImage !== 'undefined') {
+        /*if (typeof options.addrMarkerImage !== 'undefined') {
             if (options.addrMarkerImage != "")
                 this.addrMarkerImage = options.addrMarkerImage;
             else
                 this.addrMarkerImage = ""
         }
         else
-            this.addrMarkerImage = "images/blue-pushpin.png"
+            this.addrMarkerImage = "images/blue-pushpin.png" */
 
     	this.currentPinpoint = null;
     	$("#result_count").html("");
@@ -51,14 +51,14 @@
         this.map = new google.maps.Map($("#map_canvas")[0], this.myOptions);
         
         // maintains map centerpoint for responsive design
-        google.maps.event.addDomListener(self.map, 'idle', function () {
+        /*google.maps.event.addDomListener(self.map, 'idle', function () {
             self.calculateCenter();
         });
         google.maps.event.addDomListener(window, 'resize', function () {
             self.map.setCenter(self.map_centroid);
         });
-        self.searchrecords = null;
-
+        self.searchrecords = null; */
+        
         //reset filters
         $("#search_address").val(self.convertToPlainString($.address.parameter('address')));
         var loadRadius = self.convertToPlainString($.address.parameter('radius'));
@@ -99,6 +99,7 @@
         self.fusionTable = self.searchrecords;
         self.searchrecords.setMap(map);
         self.getCount(whereClause);
+        self.getList(whereClause);
     };
 
 
@@ -298,7 +299,54 @@
         });
         $("#result_box").fadeIn();
     };
+    
+    MapsLib.prototype.getList = function(whereClause) {
+    var self = this;
+    var selectColumns = 'Venue, Address, Date, OfferingID';
 
+    self.query({ 
+      select: selectColumns, 
+      where: whereClause 
+    }, function(response) { 
+      self.displayList(response);
+    });
+  },
+
+  MapsLib.prototype.displayList = function(json) {
+    var self = this;
+
+    var data = json['rows'];
+    var template = '';
+
+    var results = $('#results_list');
+    results.hide().empty(); //hide the existing list and empty it out first
+
+    if (data == null) {
+      //clear results list
+      results.append("<li><span class='lead'>No results found</span></li>");
+    }
+    else {
+      for (var row in data) {
+        template = "\
+          <div class='row-fluid item-list'>\
+            <div class='span12'>\
+                <div class='well'>\
+              " + '<b>&#8226; Venue: </b>' + data[row][0] + "\
+              <br />\
+              " + '<b>&#8226; Date: </b>' + data[row][2] + "\
+              <br />\
+              " + '<b>&#8226; Address: </b>' + data[row][1] + "\
+              <br />\
+              " + '<b>&#8226; Offering ID: </b>' + data[row][3] + "\
+              <br />\
+                </div>\
+            </div>\
+          </div>";
+        results.append(template);
+      }
+    }
+    results.fadeIn();
+  },
     MapsLib.prototype.addCommas = function (nStr) {
         nStr += '';
         x = nStr.split('.');
@@ -371,3 +419,20 @@
     }
 
 })(window);
+
+// getDistance calculation uses Haversine formula from centerpoint of map to each row lat and lng
+var rad = function(x) {
+  return x * Math.PI / 180;
+};
+
+var getDistance = function(p1_lat, p1_long, p2_lat, p2_long) {
+  var R = 6378137; // Earth’s mean radius in meter
+  var dLat = rad(p2_lat - p1_lat);
+  var dLong = rad(p2_long - p1_long);
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(rad(p1_lat)) * Math.cos(rad(p2_lat)) *
+    Math.sin(dLong / 2) * Math.sin(dLong / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return Math.round(d * .0006 * 10) / 10; // returns the distance in miles, rounded to the nearest 0.1
+};

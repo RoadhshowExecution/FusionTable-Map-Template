@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <title>Searchable Map Template Demo - iframe</title>
+    <title>Roadshow Host Venue Search Tool - iframe</title>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content='' name='description' />
@@ -15,43 +15,75 @@
     <![endif]-->
   </head>
   <body>
-    
+    <div class='navbar navbar-default navbar-static-top'>
+      <div class='container-fluid iframe'>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class='navbar-brand'><text-align='center'; line-height='200%'><font color='#ff6200'><big>If you do not have the IE 11 Browser, this page will not function properly. <br>
+          If this page doesn't load, please call the IT Helpdesk and ensure your system is upgraded.</a></big></font>
+        </div>
+      </div>
+    </div>
     <div class='container-fluid iframe'>
-      <div class='well'>
-        <form class="form-inline" role="form">  
-          <div class="form-group">
-            <div class="input-group" id='search_address_group'>
-              <input class='form-control' id='search_address' placeholder='Enter an address/intersection' type='text' />
-              <span class="input-group-btn">
-                <a class='btn btn-default' id='find_me' href='#'>
+      <div class='well-search'>
+        <div class='left-div'>
+        <img border="0" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/TheHomeDepot.svg" 
+        width="100" height="100" alt="THD Logo" float="left">
+        </div>
+         <div class='right-div'>
+            <h1>Roadshow Host Venues</h1>
+              <form class="form-inline" role="form">  
+            <div class="form-group">
+              <div class="input-group" id='search_address_group'>
+                <input class='form-control'; id='search_address'; placeholder="Enter your Store's Street Address"; type='text' />
+                  <span class="input-group-btn">
+                    <a class='btn btn-primary' id='search' href='#'>
+                      <i class='glyphicon glyphicon-search'></i>
+                    </a>
+                    <a class='btn btn-default' id='reset' href='#'>
+                      <i class='glyphicon glyphicon-repeat'></i>
+                    </a>
+                <!--<a class='btn btn-default' id='find_me' href='#'>
                   <i class='glyphicon glyphicon-screenshot'></i>
-                </a>
-              </span>
+                </a>-->
+                  </span>
+              </div>
+                <div class="form-group">
+                  <label>&nbsp;
+                    within&nbsp;
+                    <select id='search_radius'>
+                      <option value='16100'>10 miles</option>
+                      <option value='48300'>30 miles</option>
+                      <option value='96600'>60 miles</option>
+                      <option value='144900'>90 miles</option>
+                      <option value='193200'>120 miles</option>
+                    </select>
+                  </label>
+                </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="form-group">
+                    <div class="btn-group">
+                      <div class="left-div">
+                        <!--<a class='btn btn-primary' id='search' href='#'>
+                          <i class='glyphicon glyphicon-search'></i>
+                        </a>
+                        <a class='btn btn-default' id='reset' href='#'>
+                          <i class='glyphicon glyphicon-repeat'></i>
+                        </a>-->
+                      </div>
+                      <div>
+                        <h4>(<a <a href="about.html"> How to Guide </a>)
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+              </form>
             </div>
           </div>
-          <div class="form-group">
-          <label>&nbsp;
-            within&nbsp;
-            <select id='search_radius'>
-              <option value='400'>2 blocks</option>
-              <option value='805'>1/2 mile</option>
-              <option value='1610'>1 mile</option>
-              <option value='3220'>2 miles</option>
-            </select>
-          </label>
-          </div>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <div class="form-group">
-            <div class="btn-group">
-              <a class='btn btn-primary' id='search' href='#'>
-                <i class='glyphicon glyphicon-search'></i>
-              </a>
-              <a class='btn btn-default' id='reset' href='#'>
-                <i class='glyphicon glyphicon-repeat'></i>
-              </a>
-            </div>
-          </div>
-        </form>
       </div>
 
       <noscript>
@@ -60,11 +92,15 @@
           <p>Please enable JavaScript to view the map.</p>
         </div>
       </noscript>
-      <div id='map_canvas'></div>
-      <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
-      <p class='pull-right'>
-        <small><a href='http://derekeder.com/searchable_map_template/'>Searchable Map Template</a> by <a href='http://derekeder.com'>Derek Eder</a>.</small>
-      </p>
+      
+      <div id='map_canvas'; class='map-left'></div>
+      <!--<div class='well-right'>-->
+        <div style="height:500px; overflow:auto;" class='well-right'>
+          <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
+          <div id='results_list'></div>
+        </div>
+      </div>
+
     </div>
 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -77,20 +113,21 @@
         $(function() {
           
           var myMap = new MapsLib({
-            fusionTableId:      "1m4Ez9xyTGfY2CU6O-UgEcPzlS0rnzLU93e4Faa0",
-            googleApiKey:       "AIzaSyA3FQFrNr5W2OEVmuENqhb2MBB2JabdaOY",
-            locationColumn:     "geometry",
-            map_center:         [41.8781136, -87.66677856445312],
-            locationScope:      "chicago"
+            fusionTableId:      "1rbp7EYFW877DuFtYXRSYr_wTvVaJhpbTHdeq-H-O",
+            googleApiKey:       "AIzaSyBon_D4T5M5CbCKznePhsf_GgjAXW2VWjk",
+            locationColumn:     "Address",
+            recordName:         "Location",
+            recodNamePlural:	  "Locations",
+            map_center:         [35.481918, -97.508469],
+            defaultZoom:        4,
+            searchRadius:	      144900,
+            addMarkerImage:     (null),
           });
-
           
           var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
-
           $(':checkbox').click(function(){
             myMap.doSearch();
           });
-
           $(':radio').click(function(){
             myMap.doSearch();
           });
@@ -124,4 +161,8 @@
       //]]>
     </script>
   </body>
+  <footer>
+    <a href='http://derekeder.com/searchable_map_template/'>Searchable Map Template</a> 
+    by <a href='http://derekeder.com'>Derek Eder</a>
+  </footer>
 </html>
